@@ -10,5 +10,6 @@ app.listen(process.env.PORT, () => {
 });
 
 app.get("/", (req: Request, res: Response, next: NextFunction) => {
+  console.log(req.body + " dsadas")
   res.send("yo it me");
 });
