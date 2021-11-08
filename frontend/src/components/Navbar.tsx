@@ -4,7 +4,11 @@ import { Container } from './Container'
 import Cart from '../components/Cart'
 
 import Router, { useRouter } from 'next/router';
+// import nProgress from 'nprogress';
 
+// Router.onRouteChangeStart = () => nProgress.start();
+// Router.onRouteChangeComplete = () => nProgress.done();
+// Router.onRouteChangeError = () => nProgress.done();
 
 export function Navbar(){
   const router = useRouter();

@@ -1,0 +1,26 @@
+[
+    {
+        "name":"Cheese Pizza",
+        "size": {
+            "small":11,
+            "medium": 13,
+            "large": 15
+        }
+    },
+    {
+        "name": "Pepperoni Pizza",
+        "size": {
+            "small":11,
+            "medium": 13,
+            "large": 15
+        }
+    },
+    {
+        "name": "Meatlovers Pizza",
+        "size": {
+            "small":11,
+            "medium": 13,
+            "large": 15
+        }
+    }
+]
