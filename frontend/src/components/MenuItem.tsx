@@ -1,10 +1,20 @@
 import { useState } from "react";
-import { Container, Box, Select, Button, Image } from "@chakra-ui/react";
+import { Container, Box, Select, Button, Image, Flex } from "@chakra-ui/react";
+
+
+export function createOptions(amount) {
+  let options = [];
+  for (let i = 1; i <= amount; i++) {
+    options.push(<option key={i}>{i}</option>);
+  }
+  return options;
+}
 
 const MenuItem = ({ name, sizes, image, addToCart, id }) => {
   const buttonAddToCart = (
     image: string,
     name: string,
+    size: any,
     price: number,
     quantity: number,
     id: number
@@ -12,6 +22,7 @@ const MenuItem = ({ name, sizes, image, addToCart, id }) => {
     const selectedItem = {
       image: image,
       name: name,
+      size: size,
       price: price,
       quantity,
       id: id,
@@ -20,45 +31,50 @@ const MenuItem = ({ name, sizes, image, addToCart, id }) => {
   };
 
   const [price, setPrice] = useState(sizes.large);
+  const [size, setSize]: any = useState("large");
   const [quantity, setQuantity] = useState(1);
   function priceHandler(e) {
     let value = e.target.value;
     setPrice(sizes[value]);
+    setSize(value);
+    //console.log(value)
   }
   function quantityHandler(e) {
     let value = e.target.value;
     setQuantity(parseInt(value));
   }
-  let options = [];
-  function createOptions() {
-    for (let i = 1; i < 10; i++) {
-      options.push(<option key={i}>{i}</option>);
-    }
-    return options;
-  }
+  
   return (
-    <Container>
+    <Flex>
+      <Box width="200px">
       <h2>{name}</h2>
       price: ${price}
-      <Select onChange={priceHandler} defaultValue={"large"}>
-        <option>large</option>
-        <option>medium</option>
-        <option>small</option>
+     <div>
+      <Select onChange={priceHandler} defaultValue={Object.keys(sizes).slice(-1)[0] }>
+        {Object.keys(sizes).map((key) => (
+          <option key={key+id}>{key}</option>
+        ))}
       </Select>
-      <Button onClick={() => buttonAddToCart(image, name, price, quantity, id)}>
+      <Flex>
+      <Select onChange={quantityHandler} defaultValue={1} width="80px" iconSize="30px">
+        {createOptions(10)}
+      </Select>
+      <Button
+        onClick={() => buttonAddToCart(image, name, size, price, quantity, id)}
+      >
         Add To Order
       </Button>
-      <Select onChange={quantityHandler} defaultValue={1}>
-        {createOptions()}
-      </Select>
+      </Flex>
+      </div>
+      </Box>
       <Image
-        boxSize="100px"
+        boxSize="120px"
         objectFit="cover"
-        src="https://st.depositphotos.com/2640119/3010/i/950/depositphotos_30103299-stock-photo-pepperoni-pizza.jpg"
+        src={image}
         alt={name}
       />
       <Image />
-    </Container>
+    </Flex>
   );
 };
 

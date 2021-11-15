@@ -1,52 +1,16 @@
+import { SimpleGrid } from '@chakra-ui/react'
 import React from 'react'
+import CartItem from './CartItem'
 
-import {
-    Drawer,
-    DrawerBody,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerOverlay,
-    DrawerContent,
-    DrawerCloseButton,
-    useDisclosure,
-    Button,
-    Input
-  } from "@chakra-ui/react"
-
-  function Cart() {
-    const { isOpen, onOpen, onClose } = useDisclosure()
-    const btnRef = React.useRef()
-  
+const Cart = ({cart, removeFromCart, addToCart}) => {
+    if(!cart){
+        return <div>nothing in cart</div>
+    }
     return (
-      <>
-        <Button ref={btnRef} colorScheme="teal" onClick={onOpen}>
-          Cart
-        </Button>
-        <Drawer
-          isOpen={isOpen}
-          placement="right"
-          onClose={onClose}
-          finalFocusRef={btnRef}
-        >
-          <DrawerOverlay />
-          <DrawerContent>
-            <DrawerCloseButton />
-            <DrawerHeader>Your Cart</DrawerHeader>
-  
-            <DrawerBody>
-              <Input placeholder="Type here..." />
-            </DrawerBody>
-  
-            <DrawerFooter>
-              <Button variant="outline" mr={3} onClick={onClose}>
-                Cancel
-              </Button>
-              <Button colorScheme="blue">Checkout</Button>
-            </DrawerFooter>
-          </DrawerContent>
-        </Drawer>
-      </>
+        <SimpleGrid>
+        {cart.cart.map(cart => <CartItem size={cart.size} name={cart.name} quantity={cart.quantity} price={cart.price} image={cart.image} removeFromCart={removeFromCart} addToCart={addToCart} id={cart.id} key={cart.id + cart.price}/>)}
+        </SimpleGrid>
     )
-  }
+}
 
 export default Cart

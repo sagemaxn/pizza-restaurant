@@ -12,6 +12,9 @@ export class Pizza{
 
     @prop()
     public sizes: Sizes
+
+    @prop()
+    public image: string
 }
 
 

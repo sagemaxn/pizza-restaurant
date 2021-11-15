@@ -1,26 +1,23 @@
-import React, { createContext, useEffect, useReducer } from "react";
+import React, { createContext, useEffect, useReducer, useState } from "react";
 
 import { cartReducer } from "./cartReducer";
 import { parseCookies, setCookie, destroyCookie } from "nookies";
 
-const initialState: any = parseCookies().pizzaCart || { cart: [] };
+const cartCookie = parseCookies().pizzaCart
+
+const initialState = cartCookie ? JSON.parse(cartCookie) : {cart: []}
+
 export const CartContext = createContext(initialState);
 export const CartProvider = ({ children }: { children: any }) => {
   const [cart, dispatch] = useReducer(cartReducer, initialState);
-  const cookie = parseCookies().pizzaCart;
+  const [pizzaCookie, setPizzaCookie] = useState("")
 
   useEffect(() => {
-    if (typeof cart === "string") {
-      setCookie(null, "pizzaCart", cart, {
-        maxAge: 30 * 24 * 60 * 60,
-        path: "/",
-      });
-    } else {
-      setCookie(null, "pizzaCart", cart, {
-        maxAge: 30 * 24 * 60 * 60,
-        path: "/",
-      });
-    }
+    setCookie(null, "pizzaCart", JSON.stringify(cart), {
+      maxAge: 30 * 24 * 60 * 60,
+      path: "/",
+    });
+    setPizzaCookie(parseCookies().pizzaCart)
   }, [cart]);
 
   return (

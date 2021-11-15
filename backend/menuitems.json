@@ -2,25 +2,28 @@
     {
         "name":"Cheese Pizza",
         "size": {
-            "small":11,
-            "medium": 13,
-            "large": 15
-        }
+            "small":9.49,
+            "medium": 11.29,
+            "large": 13.49
+        },
+        "image":"https://www.pizzahut.com/assets/w/tile/thor/pizza_Cheese.png"
     },
     {
         "name": "Pepperoni Pizza",
         "size": {
-            "small":11,
-            "medium": 13,
-            "large": 15
-        }
+            "small":10.79,
+            "medium": 12.79,
+            "large": 15.88
+        },
+        "image":"https://www.pizzahut.com/assets/w/tile/thor/pizza_Pepperoni.png"
     },
     {
         "name": "Meatlovers Pizza",
         "size": {
-            "small":11,
-            "medium": 13,
-            "large": 15
-        }
+            "small":12.48,
+            "medium": 15.59,
+            "large": 18.79
+        },
+        "image":"https://www.pizzahut.com/assets/w/tile/thor/MeatLovers_RecipeTile_Web_175x210.png"
     }
 ]

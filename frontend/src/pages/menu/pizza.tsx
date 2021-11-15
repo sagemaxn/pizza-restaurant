@@ -1,26 +1,24 @@
 import axios from "axios";
 import { SimpleGrid } from "@chakra-ui/react";
-import MenuItem from "../components/MenuItem";
+import MenuItem from "../../components/MenuItem";
 
 import React, { useContext, useState } from "react";
-import { CartContext } from "../context/CartContext";
-import { addToCart } from "../context/cartReducer";
+import { CartContext } from "../../context/CartContext";
+import { addToCart } from "../../context/cartReducer";
 
 const Pizza = ({ pizzas }) => {
   const { dispatch, cart } = useContext(CartContext);
-
-  const addToCartHandler = (product) => {
-    dispatch(addToCart(product));
+  const addToCartHandler = (item) => {
+    dispatch(addToCart(item));
   };
   return (
     <SimpleGrid columns={2} spacingX="40px" spacingY="20px">
       {pizzas.map((pizza) => {
-        console.log("pizza " + JSON.stringify(pizza));
         return (
           <MenuItem
             name={pizza.name}
             sizes={pizza.size}
-            image="blank"
+            image={pizza.image}
             addToCart={addToCartHandler}
             id={pizza._id}
             key={pizza._id}

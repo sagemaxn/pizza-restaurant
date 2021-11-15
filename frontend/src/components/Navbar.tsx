@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Flex, useColorMode, FlexProps } from '@chakra-ui/react'
 
 
-import Cart from '../components/Cart'
+import PreviewCart from './PreviewCart'
 
 import Router, { useRouter } from 'next/router';
 
@@ -31,7 +31,7 @@ export function Navbar(){
     
   >
     <Link href="/menu">Menu</Link>
-    <Cart/>
+    <PreviewCart/>
    
   </Flex>
 )
