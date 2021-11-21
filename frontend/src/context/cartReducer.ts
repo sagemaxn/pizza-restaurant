@@ -1,5 +1,5 @@
 export const cartReducer = (state, action) => {
-  console.log("?? " + action.payload.size);
+
   switch (action.type) {
     case "ADD_TO_CART":{
       const cart = [...state.cart];
@@ -27,7 +27,7 @@ export const cartReducer = (state, action) => {
         0
       );
       const totalAmount = cart.reduce((prevTotal, curItem) => {
-        return prevTotal + curItem.price * curItem.quantity;
+        return prevTotal + Math.round(curItem.price * curItem.quantity * 1e2 ) / 1e2;
       }, 0);
     
       return {
@@ -37,32 +37,65 @@ export const cartReducer = (state, action) => {
         totalAmount,
       };  
     }  
-    case "REMOVE_FROM_CART": {
-      const cart = state.cart.filter((item) => item.id !== action.payload && item.size !== action.payload.size);
-      console.log(cart)
-      const totalItems = cart.length;
-      const totalAmount = cart.reduce((acc, currentProduct) => {
-        return acc + currentProduct.price * currentProduct.quantity;
+    case "EDIT_CART_QUANTITY":{
+      state.cart.find(item => action.payload.id === item.id && action.payload.size === item.size).quantity = action.payload.quantity
+      const cart = state.cart
+      const totalItems = cart.reduce(
+        (prevItem, curItem) => prevItem + curItem.quantity,
+        0
+      );
+      const totalAmount = cart.reduce((prevTotal, curItem) => {
+        return prevTotal + curItem.price * curItem.quantity;
       }, 0);
       return {
         ...state,
-        cart: cart,
+        cart,
         totalItems,
-        totalAmount
-      };
+        totalAmount: Math.round(totalAmount * 1e2) / 1e2
+      };   
+    }
+    case "REMOVE_FROM_CART": { 
+      {
+        const removedItem = state.cart.find((x) => x.id === action.payload.id && x.size === action.payload.size);
+        console.table('removed',removedItem)
+        const cart = state.cart.filter((item) => item !== removedItem)
+        const newTotalItems = cart.length;
+        const newTotalAmount = cart.reduce((prevItem, curItem) => {
+          return prevItem + curItem.price * curItem.quantity;
+        }, 0);
+        return {
+          ...state,
+          cart: cart,
+          totalItems: newTotalItems,
+          totalAmount: newTotalAmount,
+        };
+      }
     }   
     default:
       return state;
   }
 };
-
-export const addToCart = (item) => {
+type Item = {
+  image: string,
+  name: string,
+  size: string,
+  price: number,
+  quantity: number,
+  id: string
+};
+export const addToCart = (item: Item) => {
   return {
     type: "ADD_TO_CART",
     payload: item,
   };
 };
-export const removeFromCart = (item) => {
+export const editCartQuantity = (item: Item) => {
+  return {
+    type: "EDIT_CART_QUANTITY",
+    payload: item,
+  }
+}
+export const removeFromCart = (item: Item) => {
   return {
     type: "REMOVE_FROM_CART",
     payload: item

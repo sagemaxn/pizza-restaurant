@@ -23,7 +23,6 @@ export function Navbar(){
   
   <Flex
     flexDirection="row-reverse"
- 
     top="0"
     width="100%"
     maxWidth="48rem"

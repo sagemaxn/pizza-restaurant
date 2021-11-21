@@ -1,29 +1,59 @@
 import React, {useState, useEffect} from 'react'
-import {Select, Box, Image} from '@chakra-ui/react'
+import { Select, Box, Image, Button } from '@chakra-ui/react'
 import {createOptions} from '../components/MenuItem'
+import { ObjectId } from 'mongodb'
+import { editCartQuantity } from '../context/cartReducer'
 
-const CartItem = ({size, name, quantity, price, image, removeFromCart, addToCart, id}) => {
+interface Product {
+        image?: string
+        name?: string
+        size: string
+        price?: number
+        quantity?: number
+        id: string
+}
+
+interface Props {
+  size: string
+  name: string
+  quantity: number
+  price: number
+  image: string
+  removeFromCart: (selectedProducts: Product) => void
+  editCartItem: (selectedProducts: Product) => void
+  id: string
+
+}
+const CartItem = ({size, name, quantity, price, image, removeFromCart, editCartItem, id}: Props) => {
     const [pr, setPr] = useState(price * quantity)
     useEffect(() =>{
         setPr(price * quantity)
     },[quantity])
     const cartRemover = (
-        size: any,
-        id: number
-      ) => {
-        const selectedItem = {
-          size: size,
-          id: id,
-        };
-        removeFromCart(selectedItem);
-      }
-      const cartAdder = (
-        image: string,
+      image: string,
         name: string,
-        size: any,
+        size: string,
         price: number,
         quantity: number,
-        id: number
+        id: string
+      ) => {
+        const selectedItem = {
+          image: image,
+          name: name,
+          size: size,
+          price: price,
+          quantity,
+          id: id,
+        };
+        removeFromCart(selectedItem)
+      }
+      const cartQuantityEdditer = (
+        image: string,
+        name: string,
+        size: string,
+        price: number,
+        quantity: number,
+        id: string
       ) => {
         const selectedItem = {
           image: image,
@@ -34,21 +64,22 @@ const CartItem = ({size, name, quantity, price, image, removeFromCart, addToCart
           id: id,
         };
         console.log("size " + selectedItem.size);
-        addToCart(selectedItem);
+        editCartItem(selectedItem);
       };  
-    function changeHandler(e){
-        cartRemover(size, id)
-        cartAdder(image, name, size, price, parseInt(e.target.value), id)
+    function changeHandler(e: React.ChangeEvent<HTMLSelectElement>){
+        console.log('change')
+        console.log(e.currentTarget.value)
+        cartQuantityEdditer(image, name, size, price, parseInt(e.currentTarget.value), id)
 
     }  
     return (
-        <Box>
+        <Box data-cy="cartItem">
             <Image></Image>
-            <Select defaultValue={quantity} onChange={changeHandler}>
+            <Select defaultValue={quantity} onChange={changeHandler} data-cy="select">
                 {createOptions(10)}
             </Select>
-            {quantity} {size} {name}{pr}
-            <button onClick={()=>cartRemover(size, id)}>remove</button>
+            {quantity} {size} {name}{pr.toFixed(2)}
+            <Button onClick={()=>cartRemover(image, name, size, price, quantity, id)} data-cy='remove'>remove</Button>
         </Box>
     )
 }

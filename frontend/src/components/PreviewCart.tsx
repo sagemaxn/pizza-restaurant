@@ -22,14 +22,17 @@ import {
     const btnRef = React.useRef()
 
     const { cart } = useContext(CartContext)
-    
+    const [num, setNum] = useState(0)
+    useEffect(() => {
+      setNum(cart.totalItems)
+    },[cart.totalItems])
  
+    let cartList = cart.cart.map((item) => <div key={item.id + item.size}>{`(${item.quantity}) ${item.size} ${item.name} ` }</div>)
     return (
       <>
-        <Button ref={btnRef} colorScheme="teal" onClick={onOpen}>
-          {cart.totalItems || 0}
+        <Button ref={btnRef} colorScheme="teal" onClick={onOpen} data-cy="button">
+          { num || 0}
         </Button>
-        <Button onClick={()=> console.log(cart)}>cart?</Button>
         <Drawer
           isOpen={isOpen}
           placement="right"
@@ -41,12 +44,12 @@ import {
             <DrawerCloseButton />
             <DrawerHeader>Preview Cart
               <Link href="/cart">
-              <Button onClick={onClose}>Edit Cart</Button>
+              <Button onClick={onClose} data-cy="button">Edit Cart</Button>
               </Link>
             </DrawerHeader>
   
             <DrawerBody>
-            <Cart cart={cart}/>
+            {cartList}
             </DrawerBody>
   
             <DrawerFooter>

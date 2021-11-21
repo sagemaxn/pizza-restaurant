@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Box, Select, Button, Image, Flex } from "@chakra-ui/react";
+import { Container, Box, Select, Button, Image, Flex, Heading } from "@chakra-ui/react";
 
 
 export function createOptions(amount) {
@@ -47,25 +47,25 @@ const MenuItem = ({ name, sizes, image, addToCart, id }) => {
   return (
     <Flex>
       <Box width="200px">
-      <h2>{name}</h2>
-      price: ${price}
-     <div>
-      <Select onChange={priceHandler} defaultValue={Object.keys(sizes).slice(-1)[0] }>
+      <Heading>{name}</Heading>
+      price: ${(Math.round(price * quantity * 100)/ 100).toFixed(2)}
+     
+      <Select onChange={priceHandler} defaultValue={Object.keys(sizes).slice(-1)[0] } data-cy="select">
         {Object.keys(sizes).map((key) => (
           <option key={key+id}>{key}</option>
         ))}
       </Select>
       <Flex>
-      <Select onChange={quantityHandler} defaultValue={1} width="80px" iconSize="30px">
+      <Select onChange={quantityHandler} defaultValue={1} width="80px" iconSize="30px" data-cy="select">
         {createOptions(10)}
       </Select>
       <Button
         onClick={() => buttonAddToCart(image, name, size, price, quantity, id)}
-      >
+      data-cy="submit">
         Add To Order
       </Button>
       </Flex>
-      </div>
+      
       </Box>
       <Image
         boxSize="120px"

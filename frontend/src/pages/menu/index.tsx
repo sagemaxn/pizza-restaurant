@@ -1,11 +1,12 @@
 import React from 'react'
+import { Container } from '@chakra-ui/react'
 import Link from 'next/link'
 
 const index = () => {
     return (
-        <div>
+        <Container>
             <Link href="/menu/pizza">pizza</Link>
-        </div>
+        </Container>
     )
 }
 

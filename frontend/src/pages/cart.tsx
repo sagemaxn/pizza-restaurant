@@ -1,29 +1,39 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {Button} from '@chakra-ui/react'
 import { CartContext } from "../context/CartContext";
 import Cart from '../components/Cart'
-import { removeFromCart, addToCart } from "../context/cartReducer";
+import { removeFromCart, editCartQuantity } from "../context/cartReducer";
 
 const cart = () => {
     
     const {cart, dispatch} = useContext(CartContext)
-    const [subtotal, setSubtotal] = useState(cart.totalAmount)
-    const [tax, setTax] = useState(Math.round(subtotal * .09 * 100)/ 100)
-    const [total, setTotal] = useState(subtotal + tax)
+    const [subtotal, setSubtotal] = useState(0)
+    const [tax, setTax] = useState(0)
+    const [total, setTotal] = useState(0)
 
-    const removeFromCartHandler = (item) => {
+    useEffect(() => {
+        setSubtotal(cart.totalAmount)
+        let newTax = Math.round(cart.totalAmount * .09 * 1e2)/ 1e2
+        setTax(newTax)
+        setTotal(cart.totalAmount + newTax)
+    },[cart.totalItems])
+
+    const removeFromCartHandler = (item: object) => {
         dispatch(removeFromCart(item));
       };
-    const addToCartHandler = (item) => {
-        dispatch(addToCart(item))
+    const editCartQuantityHandler = (item: object) => {
+        dispatch(editCartQuantity(item))
+    }
+    if(cart.cart < 1){
+        return "your cart is empty!"
     }
     return (<>
         <Button type="submit">Checkout</Button>
-        <Cart cart={cart} removeFromCart={removeFromCartHandler} addToCart={addToCartHandler}></Cart>
+        <Cart cart={cart} removeFromCart={removeFromCartHandler} editCartItem={editCartQuantityHandler}></Cart>
         
-        Subtotal ${subtotal}
-              Tax: ${tax}
-              Your total ${total}
+        Subtotal ${subtotal.toFixed(2)}
+              Tax: ${tax.toFixed(2)}
+              Your total ${total.toFixed(2)}
     </>
     )
 }

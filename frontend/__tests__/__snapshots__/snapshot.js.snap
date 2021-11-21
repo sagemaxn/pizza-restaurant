@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders homepage unchanged 1`] = `
+Array [
+  <div
+    className="css-167hryd"
+  >
+    <h2
+      className="chakra-heading css-6q9ysi"
+    >
+      Joe's Pizza
+    </h2>
+  </div>,
+  <div
+    className="chakra-stack css-1u7xxh0"
+  />,
+  <label
+    className="chakra-switch css-19h2elw"
+    onClick={[Function]}
+  >
+    <input
+      checked={false}
+      className="chakra-switch__input"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      style={
+        Object {
+          "border": "0px",
+          "clip": "rect(0px, 0px, 0px, 0px)",
+          "height": "1px",
+          "margin": "-1px",
+          "overflow": "hidden",
+          "padding": "0px",
+          "position": "absolute",
+          "whiteSpace": "nowrap",
+          "width": "1px",
+        }
+      }
+      type="checkbox"
+    />
+    <span
+      aria-hidden={true}
+      className="chakra-switch__track css-ddil6j"
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <span
+        className="chakra-switch__thumb css-7roig"
+      />
+    </span>
+  </label>,
+  <span />,
+]
+`;
