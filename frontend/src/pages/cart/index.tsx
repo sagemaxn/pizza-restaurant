@@ -1,8 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
+import Link from 'next/link'
 import {Button} from '@chakra-ui/react'
-import { CartContext } from "../context/CartContext";
-import Cart from '../components/Cart'
-import { removeFromCart, editCartQuantity } from "../context/cartReducer";
+import { CartContext } from "../../context/CartContext";
+import Cart from '../../components/Cart'
+import { removeFromCart, editCartQuantity } from "../../context/cartReducer";
 
 const cart = () => {
     
@@ -28,7 +29,10 @@ const cart = () => {
         return "your cart is empty!"
     }
     return (<>
-        <Button type="submit">Checkout</Button>
+        <Link href="/cart/checkout">
+        <Button type="submit" data-cy="checkout">Checkout</Button>
+        </Link>
+        
         <Cart cart={cart} removeFromCart={removeFromCartHandler} editCartItem={editCartQuantityHandler}></Cart>
         
         Subtotal ${subtotal.toFixed(2)}

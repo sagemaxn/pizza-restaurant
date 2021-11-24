@@ -5,7 +5,6 @@ const baseUrl = "http://localhost:3001";
 import { Hero } from "../components/Hero";
 //import { Container } from '../components/Container'
 import { Main } from "../components/Main";
-import { DarkModeSwitch } from "../components/DarkModeSwitch";
 import { Navbar } from "../components/Navbar";
 
 function Index() {
@@ -13,7 +12,6 @@ function Index() {
     <>
       <Hero />
       <Main></Main>
-      <DarkModeSwitch />
     </>
   );
 }

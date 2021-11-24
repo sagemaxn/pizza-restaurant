@@ -2,72 +2,72 @@ export const cartReducer = (state, action) => {
 
   switch (action.type) {
     case "ADD_TO_CART":{
-      const cart = [...state.cart];
+      const newCart = [...state.cart];
       const itemID = action.payload.id;
       const itemQty = parseInt(action.payload.quantity);
       console.log(action.payload.id);
       const itemPrice = action.payload.price;
 
-      cart.map((element) => {
+      newCart.map((element) => {
         console.log(element.id === itemID);
       });
 
       const inCart =
-        cart.find(
+        newCart.find(
           (element) => element.id === itemID && element.price === itemPrice
         ) || [];
         console.log(inCart)
 
       inCart.quantity > 0
         ? (inCart.quantity += itemQty)
-        : cart.push(action.payload);
+        : newCart.push(action.payload);
 
-      const totalItems = cart.reduce(
+      const totalItems = newCart.reduce(
         (prevItem, curItem) => prevItem + curItem.quantity,
         0
       );
-      const totalAmount = cart.reduce((prevTotal, curItem) => {
+      const totalAmount = newCart.reduce((prevTotal, curItem) => {
         return prevTotal + Math.round(curItem.price * curItem.quantity * 1e2 ) / 1e2;
       }, 0);
     
       return {
         ...state,
-        cart,
+        cart: newCart,
         totalItems,
         totalAmount,
       };  
     }  
     case "EDIT_CART_QUANTITY":{
       state.cart.find(item => action.payload.id === item.id && action.payload.size === item.size).quantity = action.payload.quantity
-      const cart = state.cart
-      const totalItems = cart.reduce(
+      const newCart = state.cart
+      const newTotalItems = newCart.reduce(
         (prevItem, curItem) => prevItem + curItem.quantity,
         0
       );
-      const totalAmount = cart.reduce((prevTotal, curItem) => {
+      const newTotalAmount = newCart.reduce((prevTotal, curItem) => {
         return prevTotal + curItem.price * curItem.quantity;
       }, 0);
       return {
         ...state,
-        cart,
-        totalItems,
-        totalAmount: Math.round(totalAmount * 1e2) / 1e2
+        cart: newCart,
+        totalItems: newTotalItems,
+        totalAmount: Math.round(newTotalAmount * 1e2) / 1e2
       };   
     }
     case "REMOVE_FROM_CART": { 
       {
         const removedItem = state.cart.find((x) => x.id === action.payload.id && x.size === action.payload.size);
         console.table('removed',removedItem)
-        const cart = state.cart.filter((item) => item !== removedItem)
-        const newTotalItems = cart.length;
-        const newTotalAmount = cart.reduce((prevItem, curItem) => {
+        const newCart = state.cart.filter((item) => item !== removedItem)
+        const newTotalItems = newCart.length;
+        const newTotalAmount = newCart.reduce((prevItem, curItem) => {
           return prevItem + curItem.price * curItem.quantity;
         }, 0);
         return {
           ...state,
-          cart: cart,
+          cart: newCart,
           totalItems: newTotalItems,
-          totalAmount: newTotalAmount,
+          totalAmount: Math.round(newTotalAmount * 1e2) / 1e2,
         };
       }
     }   

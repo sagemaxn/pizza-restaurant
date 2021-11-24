@@ -11,16 +11,18 @@ describe('Cart stuff', () => {
       cy.get('[data-cy=submit]').eq(1).click()
       cy.visit('http://localhost:3000/cart')    
     })
-    it('', () => {
-      cy.contains('Cheese') 
+    it('renders correct amount of items and can delete them', () => { 
       cy.get('[data-cy=cartItem]').its('length').should('eq',3)
 
       cy.get('[data-cy=remove]').eq(0).click()
       cy.get('[data-cy=cartItem]').its('length').should('eq',2)
     })
-    it('can change quantity of items', () => {
+    it('can change quantity and navigate to the checkout page', () => {
       cy.get(`[data-cy=select]`).eq(0).select("5") 
       cy.get(`[data-cy=select]`).eq(2).select("3") 
       cy.get('[data-cy=button').contains('12')
+
+      cy.get('[data-cy=checkout]').click()
+      cy.url().should('include', '/cart/checkout')
     })
   })

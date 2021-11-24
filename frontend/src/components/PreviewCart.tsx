@@ -13,10 +13,12 @@ import {
     Button,
     Input
   } from "@chakra-ui/react"
+  import { Icon } from "@chakra-ui/react"
+  import { AiOutlineShoppingCart } from "react-icons/ai"
   import { CartContext } from "../context/CartContext";
   import CartItem from './CartItem'
   import Cart from './Cart'
-
+  
   function PreviewCart() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
@@ -31,6 +33,7 @@ import {
     return (
       <>
         <Button ref={btnRef} colorScheme="teal" onClick={onOpen} data-cy="button">
+          <Icon as={AiOutlineShoppingCart}></Icon>
           { num || 0}
         </Button>
         <Drawer
@@ -42,7 +45,7 @@ import {
           <DrawerOverlay />
           <DrawerContent>
             <DrawerCloseButton />
-            <DrawerHeader>Preview Cart
+            <DrawerHeader>Cart Preview
               <Link href="/cart">
               <Button onClick={onClose} data-cy="button">Edit Cart</Button>
               </Link>
