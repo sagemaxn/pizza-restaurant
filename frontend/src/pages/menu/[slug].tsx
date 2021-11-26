@@ -1,6 +1,7 @@
 import axios from "axios";
 import { SimpleGrid } from "@chakra-ui/react";
 import MenuItem from "../../components/MenuItem";
+import {useRouter} from 'next/router'
 import {ObjectId} from 'mongodb'
 
 import React, { useContext, useState } from "react";
@@ -17,13 +18,13 @@ interface props {
   pizzas : pizzaObj[]
 }
 
-const Pizza = ({ pizzas }: props) => {
+const Pizza = ({ pizzas }: props) => { 
   const { dispatch, cart } = useContext(CartContext);
   const addToCartHandler = (item: object) => {
     dispatch(addToCart(item));
   };
   return (
-    <SimpleGrid columns={2} spacingX="40px" spacingY="20px">
+    <SimpleGrid columns={2} spacingX="40px" spacingY="20px" alignContent={"center"}>
       {pizzas.map((pizza) => {
         console.log(typeof pizza)
         return (
@@ -41,11 +42,31 @@ const Pizza = ({ pizzas }: props) => {
   );
 };
 
-export async function getStaticProps() {
-  const url = `http://localhost:3001/pizza`;
-  const response = await axios.get(url);
-  console.log("id "+typeof response.data[0].id)
+export const getStaticPaths = async () => {
 
+    return {
+        paths: [{ params: { slug: 'pizza' } },
+        { params: { slug: 'sides' } }],
+        fallback: true //indicates the type of fallback
+    }
+}
+
+export async function getStaticProps({params}) {
+  console.log(JSON.stringify(params))
+  console.log(params)
+ let response = {data: ''}
+ if (params === 'pizza' || 'sides'){
+  const url = `http://localhost:3001/items/${params}`;
+  response = await axios.get(url);
+  }
+  if (!response) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+  }
   return { props: { pizzas: response.data } };
 }
 

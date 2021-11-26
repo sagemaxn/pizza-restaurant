@@ -1,35 +1,33 @@
 import Link from 'next/link'
-import { Flex, useColorMode, FlexProps } from '@chakra-ui/react'
+import { Flex, Stack, Button } from '@chakra-ui/react'
 
 
 import PreviewCart from './PreviewCart'
 
-import Router, { useRouter } from 'next/router';
-
 export function Navbar(){
-  const router = useRouter();
-  const user = false;
-
-  function isActive(route) {
-    // return true or false
-    return route === router.pathname;
-  }
-  const { colorMode } = useColorMode()
-
-  const bgColor = { light: 'gray.50', dark: 'gray.900' }
-
-  const color = { light: 'black', dark: 'white' }
   return(
   
   <Flex
-    flexDirection="row-reverse"
+    flexDirection="row"
+    justify={'space-between'}
     top="0"
     width="100%"
-    maxWidth="48rem"
-    py={3}
-    
+    minH={'60px'}
+    py={{ base: 2 }}
+    px={{ base: 4 }}
+    borderBottom={1}
+    borderStyle={'solid'}
+    align={'center'}   
   >
-    <Link href="/menu">Menu</Link>
+    <Stack
+          flex={{ base: 1, md: 0 }}
+          direction={'row'}
+          spacing={6}>
+            <Link href="/">           
+            Joe's Pizza        
+          </Link>
+          <Link href="/menu">Menu</Link>
+        </Stack>
     <PreviewCart/>
    
   </Flex>

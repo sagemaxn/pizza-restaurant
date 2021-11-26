@@ -10,7 +10,7 @@ connect();
 
 const app = express();
 app.use(cors());
-app.use('/pizza', pizzaRouter)
+app.use('/items', pizzaRouter)
 
 app.listen(process.env.PORT, () => {
   console.log(`Server has started on port ${process.env.PORT}.`);
