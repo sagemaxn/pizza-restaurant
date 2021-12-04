@@ -30,7 +30,7 @@ const cart = () => {
     }
     return (<>
         <Link href="/cart/checkout">
-        <Button type="submit" data-cy="checkout">Checkout</Button>
+        <Button type="submit" data-cy="checkout" colorScheme='red'>Checkout</Button>
         </Link>
         
         <Cart cart={cart} removeFromCart={removeFromCartHandler} editCartItem={editCartQuantityHandler}></Cart>

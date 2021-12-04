@@ -1,4 +1,4 @@
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Container } from "@chakra-ui/react";
 import { CartProvider } from "../context/CartContext";
 
 import theme from "../theme";
@@ -11,7 +11,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ChakraProvider resetCSS theme={theme}>
       <CartProvider>
         <Layout>
+          <Container maxW='container.lg'>
           <Component {...pageProps} />
+          </Container>
         </Layout>
       </CartProvider>
     </ChakraProvider>

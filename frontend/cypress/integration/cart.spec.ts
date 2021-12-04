@@ -1,6 +1,6 @@
 describe('Cart stuff', () => {
     beforeEach('does cart stuff', () => {
-      cy.visit('http://localhost:3000/menu/pizza')
+      cy.visit('http://localhost:3000/pizza')
 
       cy.get('[data-cy=submit]').eq(0).click()
 

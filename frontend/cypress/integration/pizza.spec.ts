@@ -1,6 +1,6 @@
 describe('Piza Things on the pizza page', () => {
     it('does pizza stuff', () => {
-      cy.visit('http://localhost:3000/menu/pizza')
+      cy.visit('http://localhost:3000/pizza')
     
       cy.get(`[data-cy=select]`).eq(0).select('small')
       
@@ -15,7 +15,6 @@ describe('Piza Things on the pizza page', () => {
       cy.url().should('include', '/cart')
 
       cy.contains('Menu').click()
-      cy.url().should('include', '/menu')
 
      // cy.select('[data-cy=select]')
     })

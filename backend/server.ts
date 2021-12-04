@@ -3,14 +3,14 @@ import * as dotenv from "dotenv";
 import * as menu from "./menuitems.json";
 import cors from "cors";
 dotenv.config();
-import pizzaRouter from './controllers/pizza'
+import itemRouter from './controllers/item'
  
 import connect from "./utils/mongo";
 connect();
 
 const app = express();
 app.use(cors());
-app.use('/items', pizzaRouter)
+app.use('/items', itemRouter)
 
 app.listen(process.env.PORT, () => {
   console.log(`Server has started on port ${process.env.PORT}.`);

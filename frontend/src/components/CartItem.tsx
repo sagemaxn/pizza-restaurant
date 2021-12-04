@@ -93,7 +93,7 @@ const CartItem = ({
       </Select>
       {quantity} {size} {name}
       {pr.toFixed(2)}
-      <Button
+      <Button colorScheme='red'
         onClick={() => cartRemover(image, name, size, price, quantity, id)}
         data-cy="remove"
       >
