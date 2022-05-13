@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import Link from 'next/link'
-import {Button} from '@chakra-ui/react'
+import {Button, Flex, List, ListItem} from '@chakra-ui/react'
 import { CartContext } from "../../context/CartContext";
 import Cart from '../../components/Cart'
 import { removeFromCart, editCartQuantity } from "../../context/cartReducer";
@@ -34,10 +34,16 @@ const cart = () => {
         </Link>
         
         <Cart cart={cart} removeFromCart={removeFromCartHandler} editCartItem={editCartQuantityHandler}></Cart>
-        
-        Subtotal ${subtotal.toFixed(2)}
+        <List direction="column">
+        <ListItem>Subtotal ${subtotal.toFixed(2)}
+        </ListItem>
+        <ListItem>
               Tax: ${tax.toFixed(2)}
-              Your total ${total.toFixed(2)}
+              </ListItem>
+              <ListItem>     
+              Total ${total.toFixed(2)}
+              </ListItem> 
+        </List>      
     </>
     )
 }

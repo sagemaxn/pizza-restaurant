@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Select, Box, Image, Button } from "@chakra-ui/react";
+import { Select, Box, Image, Button, Flex } from "@chakra-ui/react";
 import { createOptions } from "../components/MenuItem";
 import { ObjectId } from "mongodb";
 import { editCartQuantity } from "../context/cartReducer";
@@ -87,20 +87,25 @@ const CartItem = ({
     );
   }
   return (
-    <Box data-cy="cartItem">
-      <Select defaultValue={quantity} onChange={changeHandler} data-cy="select">
+    <Flex data-cy="cartItem" w="600px" justifyContent="space-between" border="solid">
+      <Flex direction="column">
+       {size} {name}
+       <Image boxSize="80px" objectFit="cover" src={image} alt={name} />
+       </Flex> 
+      <Flex direction="column">
+      <Select defaultValue={quantity} onChange={changeHandler} data-cy="select" w="80px">
         {createOptions(10)}
       </Select>
-      {quantity} {size} {name}
+      
       {pr.toFixed(2)}
       <Button colorScheme='red'
         onClick={() => cartRemover(image, name, size, price, quantity, id)}
         data-cy="remove"
       >
-        remove
+        X
       </Button>
-      <Image boxSize="120px" objectFit="cover" src={image} alt={name} />
-    </Box>
+      </Flex> 
+    </Flex>
   );
 };
 
