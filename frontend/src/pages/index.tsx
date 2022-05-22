@@ -8,7 +8,6 @@ import {
   Button,
   Image,
 } from "@chakra-ui/react";
-import Link from "next/link";
 
 export default function Home() {
   return (
@@ -19,41 +18,18 @@ export default function Home() {
         py={{ base: 2, md: 10 }}
         direction={{ base: "column" }}
       >
-        <Stack flex={1} spacing={{ base: 5, md: 10 }}>
+        <Flex>
+          <Box>
           <Heading
             fontWeight={600}
             fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
           >
             Joe's Pizza
           </Heading>
-        </Stack>
-        <Flex
-          flex={1}
-          justify={"center"}
-          align={"center"}
-          position={"relative"}
-          w={"full"}
-        >
-          <Box
-            position={"relative"}
-            height={"300px"}
-            rounded={"2xl"}
-            boxShadow={"2xl"}
-            width={{ base: "100%", md: "50%", sm: "75%" }}
-            overflow={"hidden"}
-          >
-            <Image
-              alt={"Hero Image"}
-              fit={"cover"}
-              align={"center"}
-              w={"100%"}
-              h={"85%"}
-              src={
-                "https://www.pizzahut.com/assets/w/tile/thor/pizza_Cheese.png"
-              }
-            />
+          <Text>lorem ipsum</Text>
           </Box>
-        </Flex>
+          <Image src="https://i0.wp.com/greencottageencino.com/wp-content/uploads/2016/05/woodfire-oven-pizza.jpg?fit=940%2C571&ssl=1"/>
+          </Flex>
       </Stack>
     </Container>
   );

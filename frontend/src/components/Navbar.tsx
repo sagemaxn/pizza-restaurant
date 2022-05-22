@@ -11,18 +11,12 @@ import {
 import { FiChevronDown } from "react-icons/fi";
 
 import {
-  IconButton,
-  Avatar,
-  Box,
-  HStack,
-  VStack,
-  MenuDivider,
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
 import { FiBell } from "react-icons/fi";
 
-import PreviewCart from "./PreviewCart";
+import CartButton from "./CartButton";
 
 export function Navbar() {
   return (
@@ -34,9 +28,7 @@ export function Navbar() {
       minH={"60px"}
       py={{ base: 2 }}
       px={{ base: 4 }}
-      borderBottom={0.4}
-      borderStyle={"solid"}
-      borderColor={"grey"}
+
       //align={'center'}
     >
       <Stack flex={{ base: 1, md: 0 }} direction={"row"} spacing={10}>
@@ -46,7 +38,7 @@ export function Navbar() {
 
         <Menu>
           <MenuButton>
-            Menu <FiChevronDown />
+            <Flex>Menu <FiChevronDown /> </Flex>
           </MenuButton>
           <MenuList>
             <Link href='/pizza'>
@@ -61,7 +53,7 @@ export function Navbar() {
           </MenuList>
         </Menu>
       </Stack>
-      <PreviewCart />
+      <CartButton />
     </Flex>
   );
 }
