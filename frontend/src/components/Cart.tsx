@@ -10,7 +10,7 @@ interface Props {
 
 const Cart = ({cart, removeFromCart, editCartItem}: Props) => {
     return (
-        <SimpleGrid>
+        <SimpleGrid justifyContent="center">
         {cart.cart.map(cart => <CartItem size={cart.size} name={cart.name} quantity={cart.quantity} price={cart.price} image={cart.image} removeFromCart={removeFromCart} editCartItem={editCartItem} id={cart.id} key={cart.id + cart.price}/>)}
         </SimpleGrid>
     )

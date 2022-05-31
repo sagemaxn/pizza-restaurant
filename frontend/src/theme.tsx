@@ -15,7 +15,9 @@ const theme = extendTheme({
     black: '#16161D',
     green: '#228b22'
   },
-  fonts,
+  fonts: {
+    heading: 'peralta, sans-serif'
+  },
   breakpoints,
   button: {
     colorScheme: 'red'

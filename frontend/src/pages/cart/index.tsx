@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import Link from 'next/link'
-import {Button, Flex, List, ListItem} from '@chakra-ui/react'
+import {Button, Flex, List, ListItem, Text, Heading} from '@chakra-ui/react'
 import { CartContext } from "../../context/CartContext";
 import Cart from '../../components/Cart'
 import { removeFromCart, editCartQuantity } from "../../context/cartReducer";
@@ -26,13 +26,10 @@ const cart = () => {
         dispatch(editCartQuantity(item))
     }
     if(cart.cart < 1){
-        return "your cart is empty!"
+        return <Heading>Your cart is empty!</Heading>
     }
     return (<>
-        <Link href="/cart/checkout">
-        <Button type="submit" data-cy="checkout" colorScheme='red'>Checkout</Button>
-        </Link>
-        
+              
         <Cart cart={cart} removeFromCart={removeFromCartHandler} editCartItem={editCartQuantityHandler}></Cart>
         <List direction="column">
         <ListItem>Subtotal ${subtotal.toFixed(2)}
@@ -44,6 +41,9 @@ const cart = () => {
               Total ${total.toFixed(2)}
               </ListItem> 
         </List>      
+        <Link href="/cart/checkout">
+        <Button type="submit" data-cy="checkout" colorScheme='red'>Checkout</Button>
+        </Link>
     </>
     )
 }

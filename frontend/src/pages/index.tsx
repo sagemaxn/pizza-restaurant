@@ -18,7 +18,7 @@ export default function Home() {
         py={{ base: 2, md: 10 }}
         direction={{ base: "column" }}
       >
-        <Flex>
+        
           <Box>
           <Heading
             fontWeight={600}
@@ -26,10 +26,10 @@ export default function Home() {
           >
             Joe's Pizza
           </Heading>
-          <Text>lorem ipsum</Text>
           </Box>
           <Image src="https://i0.wp.com/greencottageencino.com/wp-content/uploads/2016/05/woodfire-oven-pizza.jpg?fit=940%2C571&ssl=1"/>
-          </Flex>
+          <Text>lorem ipsum</Text>
+         
       </Stack>
     </Container>
   );
