@@ -13,13 +13,14 @@ import {
 export default function Checkout() {
   return (
     <Container
+    margin="auto"
       as={SimpleGrid}
       maxW={"7xl"}
-      columns={{ base: 1, md: 2 }}
       spacing={{ base: 10, lg: 32 }}
       py={{ base: 10, sm: 20, lg: 32 }}
     >
       <Stack
+      margin="auto"
         bg={"gray.50"}
         rounded={"xl"}
         p={{ base: 4, sm: 6, md: 8 }}

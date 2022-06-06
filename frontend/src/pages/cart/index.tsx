@@ -29,21 +29,25 @@ const cart = () => {
         return <Heading>Your cart is empty!</Heading>
     }
     return (<>
-              
+        <Flex direction="column" margin="auto" w="600px">      
         <Cart cart={cart} removeFromCart={removeFromCartHandler} editCartItem={editCartQuantityHandler}></Cart>
+        <Flex justifyContent="flex-end" direction="row">
         <List direction="column">
         <ListItem>Subtotal ${subtotal.toFixed(2)}
         </ListItem>
         <ListItem>
               Tax: ${tax.toFixed(2)}
               </ListItem>
-              <ListItem>     
+              <ListItem fontWeight="bold">     
               Total ${total.toFixed(2)}
               </ListItem> 
         </List>      
+        </Flex>
         <Link href="/cart/checkout">
         <Button type="submit" data-cy="checkout" colorScheme='red'>Checkout</Button>
         </Link>
+
+        </Flex>
     </>
     )
 }
