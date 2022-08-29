@@ -26,10 +26,10 @@ const cart = () => {
         dispatch(editCartQuantity(item))
     }
     if(cart.cart < 1){
-        return <Heading>Your cart is empty!</Heading>
+        return <Heading textAlign="center">Your cart is empty!</Heading>
     }
     return (<>
-        <Flex direction="column" margin="auto" w="600px">      
+        <Flex direction="column" margin="auto" w="600px" background="white">      
         <Cart cart={cart} removeFromCart={removeFromCartHandler} editCartItem={editCartQuantityHandler}></Cart>
         <Flex justifyContent="flex-end" direction="row">
         <List direction="column">

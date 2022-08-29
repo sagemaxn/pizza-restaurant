@@ -26,8 +26,5 @@ itemRouter.get("/:item", async (req: Request, res: Response) => {
 itemRouter.get("/", async (req: Request, res: Response) => {
   res.send("items");
 });
-itemRouter.post("/", async (req: Request, res: Response) => {
-  res.json("testr");
-});
 
 export default itemRouter;

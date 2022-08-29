@@ -21,6 +21,7 @@ import CartButton from "./CartButton";
 export function Navbar() {
   return (
     <Flex
+      background="white"
       flexDirection="row"
       justify={"space-between"}
       top="0"

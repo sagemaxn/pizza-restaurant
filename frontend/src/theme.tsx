@@ -1,5 +1,6 @@
 import { extendTheme } from '@chakra-ui/react'
 import { createBreakpoints } from '@chakra-ui/theme-tools'
+import { url } from 'inspector'
 
 const fonts = { mono: `'Menlo', monospace` }
 
@@ -17,6 +18,13 @@ const theme = extendTheme({
   },
   fonts: {
     heading: 'peralta, sans-serif'
+  },
+  styles: {
+    global: () => ({
+      body: {
+       backgroundImage: "https://img.freepik.com/premium-vector/pizza-seamless-pattern_373337-10.jpg"
+      }
+    })
   },
   breakpoints,
   button: {

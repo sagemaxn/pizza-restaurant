@@ -54,7 +54,8 @@ const MenuItem = ({ name, sizes, image, addToCart, id }) => {
   return (
     <Flex border={'solid 1px grey'}
     justify={'space-evenly'} 
-    padding='20px'>
+    padding='20px'
+    background="white">
       <Box width='50%' >
       <Heading as='h1' size='md' colorScheme='red'>{name}</Heading>
       <Text fontSize='sm'>price: ${(Math.round(price * quantity * 100)/ 100).toFixed(2)}</Text>

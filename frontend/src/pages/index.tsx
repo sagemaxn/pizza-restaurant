@@ -6,8 +6,8 @@ import {
   Heading,
   Text,
   Button,
-  Image,
 } from "@chakra-ui/react";
+import Image from 'next/image'
 import Link from "next/link";
 
 export default function Home() {
@@ -27,22 +27,15 @@ export default function Home() {
             Joe's Pizza
           </Heading>
         </Box>
-        <Image src="https://i0.wp.com/greencottageencino.com/wp-content/uploads/2016/05/woodfire-oven-pizza.jpg?fit=940%2C571&ssl=1" />
         <Flex> 
         <Link href="/pizza">
-          <Button data-cy="pizza" colorScheme="red">
-            Pizza
-          </Button>
+          <Image src={'/pizza_Pepperoni.png'} width="250px" height="250px" objectFit="contain"/>
         </Link>
         <Link href="/sides">
-          <Button data-cy="sides" colorScheme="red">
-            Sides
-          </Button>
+          <Image src={'/'} width="250px" height="250px"/>
         </Link>
         <Link href="/drinks">
-          <Button data-cy="drinks" colorScheme="red">
-            Drinks
-          </Button>
+          <Image src={'/'} width="250px" height="250px"/>
         </Link>
         </Flex> 
       </Stack>

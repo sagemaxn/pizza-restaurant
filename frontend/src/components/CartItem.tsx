@@ -87,7 +87,7 @@ const CartItem = ({
     );
   }
   return (
-    <Flex data-cy="cartItem" w="600px" justifyContent="space-between" border="solid">
+    <Flex data-cy="cartItem" w="600px" justifyContent="space-between" border='solid 1px grey' background="white">
       <Flex direction="column">
        {size} {name}
        <Image boxSize="80px" objectFit="cover" src={image} alt={name} />
