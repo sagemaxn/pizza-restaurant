@@ -27,17 +27,28 @@ export default function Home() {
             Joe's Pizza
           </Heading>
         </Box>
-        <Flex> 
+        <Flex direction="column">
         <Link href="/pizza">
-          <Image src={'/pizza_Pepperoni.png'} width="250px" height="250px" objectFit="contain"/>
+          <Box position="relative" textAlign="center">
+          <Image src={'/pizza_Pepperoni.png'} width="700x" height="250px" objectFit="cover"/>
+          <Text fontSize="80px" position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)">Pizza!</Text>
+          </Box>
         </Link>
+        <Flex> 
         <Link href="/sides">
-          <Image src={'/'} width="250px" height="250px"/>
+        <Box position="relative" textAlign="center">
+          <Image src={'/pizza_Pepperoni.png'} width="350px" height="250px"/>
+          <Text fontSize="80px" position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)">Sides!</Text>
+          </Box>
         </Link>
         <Link href="/drinks">
-          <Image src={'/'} width="250px" height="250px"/>
+        <Box position="relative" textAlign="center">
+          <Image src={'/pizza_Pepperoni.png'} width="350px" height="250px"/>
+          <Text fontSize="80px" position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)">Drinks!</Text>
+          </Box>
         </Link>
         </Flex> 
+        </Flex>
       </Stack>
     </Container>
   );
