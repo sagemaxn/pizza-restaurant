@@ -22,8 +22,9 @@ const theme = extendTheme({
   styles: {
     global: () => ({
       body: {
-       backgroundImage: "https://img.freepik.com/premium-vector/pizza-seamless-pattern_373337-10.jpg"
-      }
+       backgroundImage: "https://img.freepik.com/premium-vector/pizza-seamless-pattern_373337-10.jpg",
+       marginBottom: '50px'
+      },
     })
   },
   breakpoints,

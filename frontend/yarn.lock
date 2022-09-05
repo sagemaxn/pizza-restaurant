@@ -1687,6 +1687,11 @@
   "resolved" "https://registry.npmjs.org/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz"
   "version" "0.2.5"
 
+"@fontsource/fraunces@^4.5.8":
+  "integrity" "sha512-zyeSdS0O9Jo+ihYHApUXRdHdsL2tdPX4ZH/dvphQlmp+maNj2v05tuFfARjoI22dU7eFzIs/YZ3MIRzi6LvLdQ=="
+  "resolved" "https://registry.npmjs.org/@fontsource/fraunces/-/fraunces-4.5.8.tgz"
+  "version" "4.5.8"
+
 "@fontsource/peralta@^4.5.8":
   "integrity" "sha512-ViOz/deZld+EWTd6pjxWD9h0s67jn0RTPrw/41fN9iab9Ygl10Uw20q3dWkkd1lp+qYrAqy8gHEbzHLmnkijmA=="
   "resolved" "https://registry.npmjs.org/@fontsource/peralta/-/peralta-4.5.8.tgz"
@@ -4322,11 +4327,6 @@
   "resolved" "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz"
   "version" "2.1.2"
 
-"nan@^2.13.2":
-  "integrity" "sha512-8ZtvEnA2c5aYCZYd1cvgdnU6cqwixRoYg70xPLWUws5ORTa/lnw+u4amixRS/Ac5U5mQVgp9pnlSUnbNWFaWZQ=="
-  "resolved" "https://registry.npmjs.org/nan/-/nan-2.15.0.tgz"
-  "version" "2.15.0"
-
 "nanoid@^3.1.30":
   "integrity" "sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw=="
   "resolved" "https://registry.npmjs.org/nanoid/-/nanoid-3.3.4.tgz"
@@ -4961,13 +4961,6 @@
   "integrity" "sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q=="
   "resolved" "https://registry.npmjs.org/slash/-/slash-3.0.0.tgz"
   "version" "3.0.0"
-
-"sleep@6.1.0":
-  "integrity" "sha512-Z1x4JjJxsru75Tqn8F4tnOFeEu3HjtITTsumYUiuz54sGKdISgLCek9AUlXlVVrkhltRFhNUsJDJE76SFHTDIQ=="
-  "resolved" "https://registry.npmjs.org/sleep/-/sleep-6.1.0.tgz"
-  "version" "6.1.0"
-  dependencies:
-    "nan" "^2.13.2"
 
 "slice-ansi@^3.0.0":
   "integrity" "sha512-pSyv7bSTC7ig9Dcgbw9AuRNUb5k5V6oDudjZoMBSr13qpLBG7tB+zgCkARjq7xIUgdz5P1Qe8u+rSGdouOOIyQ=="

@@ -13,6 +13,7 @@ import {
       position="fixed"
       bottom="0"
       width="100%"
+      height="50px"
         bg={useColorModeValue('gray.50', 'gray.900')}
         color={useColorModeValue('gray.700', 'gray.200')}>
         <Container

@@ -1,6 +1,7 @@
 import { AppProps } from "next/app";
 import { ChakraProvider, Container } from "@chakra-ui/react";
 import '@fontsource/peralta'
+import '@fontsource/fraunces'
 
 import { CartProvider } from "../context/CartContext";
 import theme from "../theme";
