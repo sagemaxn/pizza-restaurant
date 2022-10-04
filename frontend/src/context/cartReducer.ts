@@ -1,4 +1,6 @@
-export const cartReducer = (state, action) => {
+//need to add proper typing
+
+export const cartReducer = (state: any, action: any) => {
 
   switch (action.type) {
     case "ADD_TO_CART":{

@@ -2,8 +2,19 @@ import { SimpleGrid, Heading } from '@chakra-ui/react'
 import React from 'react'
 import CartItem from './CartItem'
 
+interface t {
+    size: string
+    name: string
+    quantity: number
+    price: number
+    image: string
+    id: string
+}
+interface cart {
+    cart: [t]
+}
 interface Props {
-    cart: any
+    cart: cart
     removeFromCart: (item: object) => void
     editCartItem: (item: object) => void
 }

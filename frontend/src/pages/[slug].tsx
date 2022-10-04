@@ -3,6 +3,8 @@ import { SimpleGrid } from "@chakra-ui/react";
 import MenuItem from "../components/MenuItem";
 import {useRouter} from 'next/router'
 import {ObjectId} from 'mongodb'
+import { ParsedUrlQuery } from 'querystring';
+import { GetStaticPaths, GetStaticProps } from 'next'
 
 import React, { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
@@ -15,12 +17,13 @@ interface itemObj {
   _id: ObjectId
 }
 interface props {
-  pizzas : itemObj[]
+  items : itemObj[]
 }
+
 
 const Item = ({ items }: props) => { 
   const { dispatch, cart } = useContext(CartContext);
-  const addToCartHandler = (item: object) => {
+  const addToCartHandler = (item: any) => {
     dispatch(addToCart(item));
   };
   return (
@@ -43,19 +46,20 @@ const Item = ({ items }: props) => {
 
 export const getStaticPaths = async () => {
   const pathList = ['pizza', 'sides', 'drinks']
-  const paths = [
+  const paths: any = [
   ];
   pathList.forEach((item) => {paths.push(`/${item}`)})
   console.log(pathList)
   return { paths, fallback: false };
 }
 
-export async function getStaticProps({params}) {
+
+export const getStaticProps: GetStaticProps = async ({params}) => {
 
   const { slug } = params;
 
   try {
-     const response= await axios.get(`http://localhost:3001/items/${slug}`);
+     const response= await axios.get(`/items/${slug}`);
      return response? { props: { items: response.data} } : { notFound: true };
    } catch (error) {
      console.error(error);

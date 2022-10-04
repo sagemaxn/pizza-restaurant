@@ -31,20 +31,20 @@ export default function Home() {
         <Link href="/pizza">
           <Box position="relative" textAlign="center" height='260px'>
           <Image src={'/pizza_Pepperoni.png'} width="700x" height="250px" objectFit="cover"/>
-          <Text fontFamily="fraunces" fontSize="80px" position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)" color="white" textShadow = "1px 1px 0 #000">Pizza</Text>
+          <Text fontFamily="fraunces" fontSize="80px" position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)" color="white" fontWeight="bold" textShadow = "1px 1px 0 #000">Pizza</Text>
           </Box>
         </Link>
         <Flex justifyContent='space-between'> 
         <Link href="/sides">
         <Box position="relative" textAlign="center">
           <Image src={'/pizza_Pepperoni.png'} width="345px" height="250px"/>
-          <Text fontSize="80px" position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)" color="white" textShadow = "1px 1px 0 #000">Sides</Text>
+          <Text fontFamily="fraunces" fontSize="80px" position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)" color="white" fontWeight="bold" textShadow = "1px 1px 0 #000">Sides</Text>
           </Box>
         </Link>
         <Link href="/drinks">
         <Box position="relative" textAlign="center">
           <Image src={'/pizza_Pepperoni.png'} width="345px" height="250px"/>
-          <Text fontSize="80px" position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)" color="white" textShadow = "1px 1px 0 #000">Drinks</Text>
+          <Text fontFamily="fraunces" fontSize="80px" position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)" color="white" fontWeight="bold" textShadow = "1px 1px 0 #000">Drinks</Text>
           </Box>
         </Link>
         </Flex> 

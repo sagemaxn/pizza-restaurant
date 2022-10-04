@@ -19,10 +19,10 @@ const cart = () => {
         setTotal(cart.totalAmount + newTax)
     },[cart.totalItems])
 
-    const removeFromCartHandler = (item: object) => {
+    const removeFromCartHandler = (item) => {
         dispatch(removeFromCart(item));
       };
-    const editCartQuantityHandler = (item: object) => {
+    const editCartQuantityHandler = (item) => {
         dispatch(editCartQuantity(item))
     }
     if(cart.cart < 1){
