@@ -9,11 +9,14 @@ import connect from "./utils/mongo";
 connect();
 
 const app = express();
+app.use(express.static(".next"))
 app.use(cors());
 app.use('/items', itemRouter)
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server has started on port ${process.env.PORT}.`);
+const PORT = process.env.PORT || 4000
+
+app.listen(PORT, () => {
+  console.log(`Server has started on port ${PORT}.`);
 });
 
 app.get("/api/menu", (req: Request, res: Response, next: NextFunction) => {
