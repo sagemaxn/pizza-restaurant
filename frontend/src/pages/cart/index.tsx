@@ -32,7 +32,7 @@ const cart = () => {
         <Flex direction="column" margin="auto" w="600px" background="white">      
         <Cart cart={cart} removeFromCart={removeFromCartHandler} editCartItem={editCartQuantityHandler}></Cart>
         <Flex justifyContent="flex-end" direction="row">
-        <List direction="column">
+        <List>
         <ListItem>Subtotal ${subtotal.toFixed(2)}
         </ListItem>
         <ListItem>
