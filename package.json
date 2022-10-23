@@ -8,8 +8,8 @@
   },
   "scripts": {
     "build": "cd frontend && npm run build",
-    "install-client": "cd client && npm install",
-    "heroku-postbuild": "npm run install-client && npm run build && npm run server-tsc",
+    "install-frontend": "cd frontend && npm install",
+    "heroku-postbuild": "npm run install-frontend && npm run build && npm run server-tsc",
     "server": "nodemon backend/dist/server.js",
     "server-tsc": "cd backend && npx tsc",
     "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix frontend\"",
