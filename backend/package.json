@@ -7,15 +7,11 @@
     "node": "18.9",
     "yarn": "1.22"
   },
-  "scripts": {
-    "build": "cd ../frontend && npm run build",
-    "install-client": "cd ../frontend && npm install",
-    "heroku-postbuild": "npm run install-client && npm run build",
-    "start": "concurrently --kill-others-on-fail \"yarn run server\" \"cd ../frontend npm run start\"",
+  "scripts": {  
     "server": "nodemon dist/server.js",
     "postinstall": "npx tsc",
     "dev": "nodemon --exec ts-node server.ts",
-    "deploy": "git add . && git commit -m 'Heroku' && git push heroku"
+    "deploy": "cd ../ git add . && git commit -m 'Heroku' && git push heroku"
   },
   "author": "Sage Maxwell",
   "license": "ISC",
