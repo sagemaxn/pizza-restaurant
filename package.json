@@ -11,7 +11,7 @@
     "install-client": "cd frontend && npm install --legacy-peer-deps",
     "heroku-postbuild": "npm run install-client && npm run build",
     "start": "concurrently --kill-others-on-fail \"cd backend && yarn run server\" \"cd frontend && npm run start\"",
-    "postinstall": "cd backend && yarn run postinstall",
+    "postinstall": "cd backend && npm run postinstall",
     "deploy": "git add . && git commit -m 'Heroku' && git push heroku"
   },
   "repository": {
