@@ -1,0 +1,68 @@
+Arguments: 
+  /home/sage/.nvm/versions/node/v18.9.1/bin/node /home/sage/.nvm/versions/node/v18.9.1/bin/yarn install
+
+PATH: 
+  /home/sage/.nvm/versions/node/v18.9.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.9.1
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /mnt/c/Users/Scott/sage/pizza/backend/package.json: Unexpected token } in JSON at position 1065
+      at JSON.parse (<anonymous>)
+      at /home/sage/.nvm/versions/node/v18.9.1/lib/node_modules/yarn/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/home/sage/.nvm/versions/node/v18.9.1/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /home/sage/.nvm/versions/node/v18.9.1/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "pending",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "engines": {
+      "node": "18.9",
+      "yarn": "1.22"
+    },
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "node dist/index.js",
+      "postinstall": "npx tsc",
+      "dev": "nodemon --exec ts-node server.ts",
+      "build:ui": "rm -rf .next && cd ../frontend/ && yarn run build && cp -r .next ../backend",
+      "deploy": "git add . && git commit -m Heroku && git push heroku",
+      "deploy:full": "yarn build:ui && git add . && git commit -m uibuild && yarn run deploy"
+    },
+    "author": "Sage Maxwell",
+    "license": "ISC",
+    "devDependencies": {
+      "@babel/cli": "^7.16.0",
+      "@babel/core": "^7.16.0",
+      "@types/cors": "^2.8.12",
+      "@types/express": "^4.17.13",
+      "@types/node": "^16.11.6",
+      "nodemon": "^2.0.14",
+      "typescript": "^4.8.4"
+    },
+    "dependencies": {
+      "@typegoose/typegoose": "^9.2.0",
+      "cors": "^2.8.5",
+      "dotenv": "^10.0.0",
+      "express": "^4.17.1",
+      "mongoose": "^6.0.12",
+      "ts-node": "^10.4.0",
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
