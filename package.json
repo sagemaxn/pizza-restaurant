@@ -6,11 +6,12 @@
   "engines": {
     "node": "18.9"
   },
+  "proxy": "http://localhost:3000",
   "scripts": {
     "build": "cd frontend && npm run build",
     "install-frontend": "cd frontend && npm install",
     "heroku-postbuild": "npm run install-frontend && npm run build && npm run server-tsc",
-    "server": "nodemon backend/dist/server.js",
+    "server": "node backend/dist/server.js",
     "server-tsc": "cd backend && npx tsc",
     "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix frontend\"",
     "deploy": "git add . && git commit -m 'Heroku' && git push heroku"
@@ -24,6 +25,7 @@
   "devDependencies": {
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
+    "nodemon": "^2.0.14",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.14",
     "@types/express-serve-static-core": "^4.17.31",
@@ -38,10 +40,8 @@
     "dotenv": "^10.0.0",
     "express": "^4.18.2",
     "mongoose": "^6.0.12",
-    "nodemon": "^2.0.14",
     "serve-favicon": "^2.5.0",
-    "ts-node": "^10.4.0",
-    "yarn": "^1.22.19"
+    "ts-node": "^10.4.0"
   },
   "bugs": {
     "url": "https://github.com/sagemaxn/undefined/issues"
