@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-//import mongoose from 'mongoose'
 const connection: any = {};
 
 async function connect() {
@@ -8,7 +7,7 @@ async function connect() {
     console.log("Using existing connection");
     return;
   }
-  const uri = process.env.MONGODB_URI;
+  const uri = 'mongodb+srv://sage:simple@cluster0.dcenh.mongodb.net/pizza?retryWrites=true&w=majority'
 
   mongoose
     .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })

@@ -1,23 +1,41 @@
 import express, { Request, Response, NextFunction } from "express";
+import next from "next";
 import * as dotenv from "dotenv";
+
 import * as menu from "./menuitems.json";
-//import * as favicon from 'serve-favicon'
+import itemRouter from "./controllers/item";
+import connect from "./utils/mongo";
 
 dotenv.config();
-import itemRouter from './controllers/item'
- 
-import connect from "./utils/mongo";
-connect();
+const dev = process.env.NODE_ENV !== "production";
+const app = next({ dev, dir: '../frontend' });
+const handle = app.getRequestHandler();
 
-const app = express();
+(async () => {
+  try {
+    connect();
+    await app.prepare();
+    const server = express()
+    server.all("*", (req: Request, res: Response) => {
+      return handle(req, res);
+    });
 
-const path = require('path')
+    server.use("/items", itemRouter);
 
-app.use(express.static(path.join(__dirname, 'build')))
-app.get("*", function (req, res) {
-  res.sendFile(path.resolve(__dirname, "./build", "index.html"));
-});
+    server.get("/api/menu", (req: Request, res: Response, next: NextFunction) => {
+      console.log(menu);
+      res.status(200).json(menu);
+    });
 
+    const PORT = process.env.PORT || 4000;
+    server.listen(PORT, () => {
+      console.log(`Server has started on port ${PORT}.`);
+    });
+  } catch (e) {
+    console.error(e);
+    process.exit(1);
+  }
+})();
 
 // app.use("*", async (req: Request, res: Response, next: NextFunction) => {
 //   res.setHeader("Access-Control-Allow-Origin", "https://sage-wordle.herokuapp.com/")
@@ -30,27 +48,3 @@ app.get("*", function (req, res) {
 //   // );
 //   next()
 // })
-;
-
-// app.all('*', function (req, res) {
-//   res.status(200).sendFile(`/`, { root: dist });
-// });
-
-app.use('/items', itemRouter)
-
-// app.all('*', function (req, res) {
-//   res.status(200).sendFile(`/`, { root: dist });
-// });
-
-
-const PORT = process.env.PORT || 4000
-
-app.listen(PORT, () => {
-  console.log(`Server has started on port ${PORT}.`);
-});
-
-app.get("/api/menu", (req: Request, res: Response, next: NextFunction) => {
-  console.log(menu);
-  res.status(200).json(menu);
-});
-
