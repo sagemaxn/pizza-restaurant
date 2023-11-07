@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Breadsticks",
+        "size": { "standard": 5.49 },
+        "image": "https://www.pizzahut.com/assets/w/tile/thor/sides_Breadsticks_Marinara.png"
+    },
+    {
+        "name": "French Fries",
+        "size": { "standard": 2.99 },
+        "image": "https://www.pizzahut.com/assets/w/tile/thor/sides_Fries.png"
+    },
+    {
+        "name": "Mozarella Sticks",
+        "size": { "standard": 5.99 },
+        "image": "https://www.pizzahut.com/assets/w/tile/thor/Sides_FriedMozzarellaSticks.png"
+    }
+]
