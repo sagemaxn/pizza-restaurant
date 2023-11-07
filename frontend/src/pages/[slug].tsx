@@ -59,7 +59,7 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
   const { slug } = params;
 
   try {
-     const response= await axios.get(`/items/${slug}`);
+     const response= await axios.get(`http://localhost:4000/items/${slug}`);
      return response? { props: { items: response.data} } : { notFound: true };
    } catch (error) {
      console.error(error);
